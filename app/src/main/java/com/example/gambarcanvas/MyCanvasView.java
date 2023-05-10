@@ -11,6 +11,7 @@ import android.view.MotionEvent;
 import android.view.View;
 
 import androidx.annotation.Nullable;
+import androidx.constraintlayout.widget.ConstraintSet;
 import androidx.core.content.res.ResourcesCompat;
 
 public class MyCanvasView extends View {
@@ -22,6 +23,9 @@ public class MyCanvasView extends View {
     private Canvas mExtraCanvas;
     private Bitmap mExtraBitmap;
     private Rect mFrame;
+
+    private float mX, mY;
+    private static final float TOUCH_TOLERANCE = 4;
 
     public MyCanvasView(Context context) {
         this(context, null);
@@ -72,6 +76,33 @@ public class MyCanvasView extends View {
         float x = event.getX();
         float y = event.getY();
 
-        switch (event.)
+        switch (event.getAction()) {
+            case MotionEvent.ACTION_DOWN:
+                touchStart(x,y);
+                break;
+            case MotionEvent.ACTION_MOVE:
+                touchMove(x,y);
+                invalidate();
+                break;
+            case MotionEvent.ACTION_UP:
+                touchUp();
+                break;
+            default:
+        }
+        return true;
+    }
+
+    private void touchUp() {
+    }
+
+
+    private void touchMove(float x, float y) {
+
+    }
+
+    private void touchStart(float x, float y) {
+        mPath.moveTo(x, y);
+        mX = x;
+        mY = y;
     }
 }
