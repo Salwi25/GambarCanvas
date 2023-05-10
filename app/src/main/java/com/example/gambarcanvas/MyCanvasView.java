@@ -48,7 +48,7 @@ public class MyCanvasView extends View {
         mPaint.setStyle(Paint.Style.STROKE);
         mPaint.setStrokeJoin(Paint.Join.ROUND);
         mPaint.setStrokeCap(Paint.Cap.ROUND);
-        mPaint.setStrokeWidth(12);
+        mPaint.setStrokeWidth(50);
     }
 
     @Override
@@ -72,7 +72,6 @@ public class MyCanvasView extends View {
 
     @Override
     public boolean onTouchEvent(MotionEvent event) {
-        return super.onTouchEvent(event);
         float x = event.getX();
         float y = event.getY();
 
